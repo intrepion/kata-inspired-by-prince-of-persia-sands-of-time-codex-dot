@@ -1,7 +1,8 @@
+type Cue='jump'|'attack'|'hurt'|'anchor'|'win';
 export class Audio {
  private context:AudioContext|null=null; enabled=false;private lastBeat=-1;
  async toggle(){if(!this.context)this.context=new AudioContext();if(this.context.state==='suspended')await this.context.resume();this.enabled=!this.enabled;return this.enabled;}
  private tone(freq:number,duration:number,volume:number,type:OscillatorType='sine'){if(!this.enabled||!this.context)return;const t=this.context.currentTime,o=this.context.createOscillator(),g=this.context.createGain();o.type=type;o.frequency.setValueAtTime(freq,t);g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(volume,t+.02);g.gain.exponentialRampToValueAtTime(.001,t+duration);o.connect(g);g.connect(this.context.destination);o.start(t);o.stop(t+duration+.05);}
- cue(kind:string){if(kind==='jump')this.tone(420,.18,.035,'triangle');else if(kind==='attack')this.tone(180,.12,.045,'sawtooth');else if(kind==='hurt')this.tone(85,.3,.06,'triangle');else if(kind==='anchor'){this.tone(392,.8,.045);this.tone(588,.9,.025);}else if(kind==='win'){[261.63,329.63,392,523.25].forEach(f=>this.tone(f,2,.035));}}
+ cue(kind:Cue){if(kind==='jump')this.tone(420,.18,.035,'triangle');else if(kind==='attack')this.tone(180,.12,.045,'sawtooth');else if(kind==='hurt')this.tone(85,.3,.06,'triangle');else if(kind==='anchor'){this.tone(392,.8,.045);this.tone(588,.9,.025);}else if(kind==='win'){[261.63,329.63,392,523.25].forEach(f=>this.tone(f,2,.035));}}
  update(tick:number,room:number,rewind:boolean){const beat=Math.floor(tick/100);if(beat===this.lastBeat)return;this.lastBeat=beat;const notes=[130.81,196,164.81,146.83,174.61,196,164.81,98];this.tone(notes[(beat+room*2)%notes.length]*(rewind?.5:1),1.7,.018);this.tone(notes[(beat+room*2)%notes.length]*2,1.2,.012);}
 }

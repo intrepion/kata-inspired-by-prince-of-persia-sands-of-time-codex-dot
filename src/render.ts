@@ -1,5 +1,6 @@
 import { Engine, chambers, ventPhase, type Rect, type Sentinel } from './engine';
 const palettes=[['#102d3d','#235665','#d3a770'],['#113b3d','#347273','#bacf95'],['#302f3b','#79615d','#e4b877'],['#19263e','#475370','#e7b978']];
+type Pose='idle'|'run'|'swing'|'guard'|'windup';
 export class Renderer {
  private ctx:CanvasRenderingContext2D;
  constructor(canvas:HTMLCanvasElement){this.ctx=canvas.getContext('2d')!;}
@@ -26,7 +27,7 @@ export class Renderer {
   for(let y=b.y+28;y<b.y+b.h;y+=28){this.line(b.x,y,b.x+b.w,y,'#122c3970');for(let x=b.x+((Math.floor(y/28)%2)*30);x<b.x+b.w;x+=60)this.line(x,y-26,x,y,'#15333b90');}
   if(b.h>100&&b.w<130){g.fillStyle='#79d9da75';g.fillRect(b.x+2,b.y+10,3,b.h-14);g.fillRect(b.x+b.w-5,b.y+10,3,b.h-14);}
  }
- private figure(x:number,y:number,face:number,pose:string,tick:number,color:string,enemy=false,boss=false){const g=this.ctx;g.save();g.translate(x+13,y+22);g.scale(face,1);const swing=pose==='swing',guard=pose==='guard',stride=pose==='run'?Math.sin(tick*.25)*8:0;
+ private figure(x:number,y:number,face:number,pose:Pose,tick:number,color:string,enemy=false,boss=false){const g=this.ctx;g.save();g.translate(x+13,y+22);g.scale(face,1);const swing=pose==='swing',guard=pose==='guard',stride=pose==='run'?Math.sin(tick*.25)*8:0;
   // Cloth silhouette, boots and the borrowed-minute scarf.
   if(!enemy){g.fillStyle='#cd985e';g.beginPath();g.moveTo(-6,-8);g.lineTo(-27-Math.sin(tick*.15)*5,-13);g.lineTo(-18,-3);g.lineTo(-5,0);g.fill();}
   const size=boss?1.25:1;g.scale(size,size);this.line(-4,9,-5+stride,18,enemy?'#bda580':'#acd7d3',5);this.line(4,9,6-stride,18,enemy?'#8c7f76':'#5f959e',5);
@@ -51,7 +52,7 @@ export class Renderer {
   });
   // Cyan anchors with original diamond geometry.
   const [ax,ay]=c.anchor;g.save();g.translate(ax,ay-24);g.rotate(Math.PI/4);g.strokeStyle='#83e2dd';g.lineWidth=2;g.strokeRect(-11,-11,22,22);g.fillStyle='#87e6df40';g.fillRect(-8,-8,16,16);g.restore();this.line(ax,ay-55,ax,ay-47,'#9be9de');this.text('E · ANCHOR',ax,ay-62,'#96d8d5',9);
-  if(c.switch){const [sx,sy]=c.switch;g.fillStyle='#4b3934';g.fillRect(sx-10,sy-40,20,40);this.circle(sx,sy-32,10,'#dbb476');this.line(sx,sy-32,sx+8,sy-45,'#ebd4a2',3);this.text('E · SWITCH',sx,sy-62,'#e1be80',10);const open=w.gate>0;g.fillStyle=open?'#81d5c333':'#bda381';g.fillRect(760,260,28,open?15:220);for(let y=280;y<480&&!open;y+=20)this.line(763,y,785,y,'#5b5051',2);this.text(open?`${(w.gate/60).toFixed(1)}s`:'SEALED',774,240,open?'#a2efe1':'#e7bc7c',11);}
+  if(c.switch){const [sx,sy]=c.switch;g.fillStyle='#4b3934';g.fillRect(sx-10,sy-40,20,40);this.circle(sx,sy-32,10,'#dbb476');this.line(sx,sy-32,sx+8,sy-45,'#ebd4a2',3);this.text('E · SWITCH',sx,sy-62,'#e1be80',10);const open=w.gate>0;g.fillStyle=open?'#81d5c333':'#bda381';g.fillRect(760,70,28,open?15:410);for(let y=90;y<480&&!open;y+=20)this.line(763,y,785,y,'#5b5051',2);this.text(open?`${(w.gate/60).toFixed(1)}s`:'SEALED',774,100,open?'#a2efe1':'#e7bc7c',11);}
   const [ex,ey]=c.exit,clear=w.enemies.every(e=>e.hp===0);if(w.room<3){this.arch(ex-26,ey-78,53,78,clear?'#83d3c135':'#b6a38822');this.arch(ex-20,ey-70,40,70,'#061d2c');g.strokeStyle=clear?'#84d9cc':'#b5a07b';g.lineWidth=2;g.strokeRect(ex-29,ey-52,58,52);this.text(clear?'E · ENTER':'DEFEAT SENTINELS',ex,ey-96,clear?'#a5e7d8':'#bdac91',9);}else {g.fillStyle='#d0af7a';g.beginPath();g.moveTo(ex-28,ey-28);g.quadraticCurveTo(ex-21,ey-45,ex-17,ey-70);g.quadraticCurveTo(ex,ey-82,ex+17,ey-70);g.quadraticCurveTo(ex+21,ey-45,ex+28,ey-28);g.fill();this.circle(ex,ey-19,6,'#e6c98e');this.text(clear?'E · RING THE MERIDIAN':'THE MERIDIAN BELL',ex,ey-103,'#ebc78d',9);}
   for(const foe of w.enemies)this.sentinel(foe,w.tick);
   if(e.rewinding){for(let i=0;i<Math.min(60,e.history.length);i+=10){const past=e.history[e.history.length-1-i].player;g.globalAlpha=.08+(60-i)/300;this.figure(past.x,past.y,past.face,'idle',w.tick,'#8ffff0');}g.globalAlpha=1;}

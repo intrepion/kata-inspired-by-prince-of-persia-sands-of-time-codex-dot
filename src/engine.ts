@@ -29,7 +29,7 @@ export class Engine {
  world:World=makeWorld(0); reserve=6; history:World[]=[]; paused=false; rewinding=false; saveRevision=0;
  private saved:Save={version:1,room:0,anchor:false,won:false};
  readSave(){return JSON.stringify(this.saved);}
- restore(raw:string|null){const save=parseSave(raw);if(!save)return false;this.saved=save;this.world=makeWorld(save.room,save.anchor);this.world.won=save.won;this.reserve=6;this.history=[];this.rewinding=false;return true;}
+ restore(raw:string|null){const save=parseSave(raw);if(!save)return false;this.saved=save;this.world=makeWorld(save.room,save.anchor);this.world.won=save.won;if(save.won){this.world.enemies.forEach(e=>e.hp=0);this.world.player.x=chambers[save.room].exit[0];this.world.player.y=chambers[save.room].exit[1]-42;this.world.message='Dawn returns to Vey.';}this.reserve=6;this.history=[];this.rewinding=false;return true;}
  restart(){this.restore(this.readSave());this.paused=false;}
  newAdventure(){this.saved={version:1,room:0,anchor:false,won:false};this.restart();this.saveRevision++;}
  private persist(){this.saved={version:1,room:this.world.room,anchor:this.world.anchor===1,won:this.world.won};this.saveRevision++;}
@@ -46,6 +46,8 @@ export class Engine {
   const w=this.world,p=w.player,c=chambers[w.room];w.tick++;w.gate=Math.max(0,w.gate-1);
   p.invuln=Math.max(0,p.invuln-1);p.swing=Math.max(0,p.swing-1);p.cooldown=Math.max(0,p.cooldown-1);
   p.guard=input.guard?p.guard+1:0;p.buffer=input.jump?8:Math.max(0,p.buffer-1);p.coyote=p.ground?6:Math.max(0,p.coyote-1);
+  const solids=[...c.solids];if(c.switch&&w.gate===0)solids.push(r(760,70,28,410));
+  p.wall=0;for(const b of solids){if(p.y<b.y+b.h&&p.y+p.h>b.y){if(Math.abs(p.x+p.w-b.x)<1)p.wall=1;else if(Math.abs(p.x-b.x-b.w)<1)p.wall=-1;}}
   const move=Number(input.right)-Number(input.left);
   if(move)p.face=move;
   p.vx=p.ledge?0:p.vx+(move*4.3-p.vx)*(move?.35:.28);
@@ -56,7 +58,6 @@ export class Engine {
    else if(p.wall){p.vy=-13;p.vx=-p.wall*7;p.face=-p.wall;p.wall=0;p.buffer=0;}
   }
   if(input.attack&&p.cooldown===0){p.swing=16;p.cooldown=25;for(const e of w.enemies){if(e.hp>0&&Math.abs(e.x-p.x)<90&&Math.abs(e.y-p.y)<55&&(e.x-p.x)*p.face>=-20){e.hp--;e.phase='stunned';e.timer=28;w.message=e.hp===0?'The sentinel falls silent. The way is clear.':'A clean cut.';}}}
-  const solids=[...c.solids];if(c.switch&&w.gate===0)solids.push(r(760,260,28,220));
   const oldX=p.x;p.x=Math.max(8,Math.min(966,p.x+p.vx));p.wall=0;
   for(const b of solids){if(overlaps(p,b)){const side=p.vx>0?1:p.vx<0?-1:oldX<b.x?1:-1;p.x=side>0?b.x-p.w:b.x+b.w;p.wall=side;p.vx=0;
     if(!p.ground&&p.vy>=0&&p.y>b.y-18&&p.y<b.y+32&&b.y>50){p.ledge=true;p.y=b.y+4;p.face=side;p.vy=0;}
@@ -85,6 +86,7 @@ export class Engine {
     }
    }
   }
+  if(w.dead)return;
   if(input.interact){
    if(Math.abs(p.x-c.anchor[0])<58&&Math.abs(p.y+p.h-c.anchor[1])<60){
     p.hp=5;this.reserve=6;w.anchor=1;this.history=[];w.message='Anchor bound. Vitality and reserve restored. Progress saved.';this.persist();
