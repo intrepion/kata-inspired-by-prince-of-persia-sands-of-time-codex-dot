@@ -15,6 +15,10 @@ Played via normal visible controls and keyboard, with no state injection, debug 
 - Brass Lung: crossed the first vent, climbed switch terraces, used E to open the shutter and crossed it. Rewind returned from x764 to x541 with its timer/trap phase restored. Defeated sentinel, took vent damage (five → three vitality), then rewound: vitality returned to five and sentinel returned to three hits, reserve decreased to 3.0. Chose a new crossing, defeated it again, jumped the final vent and entered finale.
 - Meridian Heart: crossed the center vent, timed guard during Curator windup; visible message confirmed **Parry!** without health loss. Six guarded cuts defeated it. Reached bell and used E; ending displayed **Vey remembers the dawn.** Reload showed **See the dawn** and returned to the completed ending. New adventure confirmation reset to the aqueduct.
 
+## Final code replay
+
+Replayed all four chambers and the ending on the ceiling-bounded code at 3dec796. Garden wall kicks and upper-lip catch remained reachable. In Chrome, four distinct kicks against the sealed shutter left the courier at x734/y125 with the gate sealed; rewinding back to the switch and opening it restored the legitimate route. Defeated every sentinel and Curator again, rang the bell and captured the final-build ending. Completed-save reload reconstructed courier x920, defeated foe0 and the dawn message. Browser was then reset to a fresh aqueduct start for handoff.
+
 ## Repeated and interrupted flows
 
 Pause/resume repeatedly used throughout campaign and froze world state. Held on-screen jump and a 1.5-second native keyboard event did not retrigger jumps from OS repeat. Reset confirmation → resume → pause cleared the old confirmation. Checkpoint recovery and reload worked, and all chamber transitions were exercised. Viewport 390×844 had document width390 with no horizontal overflow; visible movement/jump buttons were exercised and viewport restored. Browser logs contained no application-origin errors; unrelated extension warnings were excluded.
@@ -24,9 +28,10 @@ Pause/resume repeatedly used throughout campaign and froze world state. Held on-
 - [Brass Lung](screenshots/brass-lung.jpg)
 - [Completed ending](screenshots/ending.jpg)
 - [390-pixel layout](screenshots/mobile.jpg)
+- [Ready to play](screenshots/ready.jpg)
 
 ## Boundaries
 
-Mac Chrome keyboard events and mouse-driven visible controls were tested. Physical user-held keys, real mobile multitouch and audio listening quality were not independently assessed. Responsive viewport testing is not a physical-device test. Storage corruption behavior is domain-tested; storage denial is handled in code but not forced in Chrome. No public deployment, boot/login autostart or Codex sidebar registration was performed.
+Mac Chrome keyboard events and mouse-driven visible controls were tested. Physical user-held keys, real mobile multitouch and audio listening quality were not independently assessed. Responsive viewport testing is not a physical-device test. Native macOS app/focus-switch testing could not proceed because the Mac was locked; no physical focus-switch verification is claimed. Storage corruption behavior is domain-tested; storage denial is handled in code but not forced in Chrome. No public deployment, boot/login autostart or Codex sidebar registration was performed.
 
 The play server uses a session-only detached Python process; HTTP 200 and browser loading were checked after detaching. Final commit/CI evidence is supplied with delivery rather than embedding its own commit hash into this file.
