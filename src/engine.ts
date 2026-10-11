@@ -46,7 +46,7 @@ export class Engine {
   const w=this.world,p=w.player,c=chambers[w.room];w.tick++;w.gate=Math.max(0,w.gate-1);
   p.invuln=Math.max(0,p.invuln-1);p.swing=Math.max(0,p.swing-1);p.cooldown=Math.max(0,p.cooldown-1);
   p.guard=input.guard?p.guard+1:0;p.buffer=input.jump?8:Math.max(0,p.buffer-1);p.coyote=p.ground?6:Math.max(0,p.coyote-1);
-  const solids=[...c.solids];if(c.switch&&w.gate===0)solids.push(r(760,70,28,410));
+  const solids=[...c.solids];if(c.switch&&w.gate===0)solids.push(r(760,0,28,480));
   p.wall=0;for(const b of solids){if(p.y<b.y+b.h&&p.y+p.h>b.y){if(Math.abs(p.x+p.w-b.x)<1)p.wall=1;else if(Math.abs(p.x-b.x-b.w)<1)p.wall=-1;}}
   const move=Number(input.right)-Number(input.left);
   if(move)p.face=move;
@@ -63,7 +63,7 @@ export class Engine {
     if(!p.ground&&p.vy>=0&&p.y>b.y-18&&p.y<b.y+32&&b.y>50){p.ledge=true;p.y=b.y+4;p.face=side;p.vy=0;}
   }}
   const oldY=p.y;
-  if(!p.ledge){p.vy=Math.min(p.wall&&move===p.wall?2:14,p.vy+.55);p.y+=p.vy;p.ground=false;
+  if(!p.ledge){p.vy=Math.min(p.wall&&move===p.wall?2:14,p.vy+.55);p.y+=p.vy;if(p.y<70){p.y=70;p.vy=0;}p.ground=false;
    for(const b of solids){if(overlaps(p,b)){if(p.vy>=0&&oldY+p.h<=b.y+1){p.y=b.y-p.h;p.vy=0;p.ground=true;}else if(p.vy<0&&oldY>=b.y+b.h-1){p.y=b.y+b.h;p.vy=0;}}}
   }
   for(const h of c.hazards)if(overlaps(p,h))this.damage(5);

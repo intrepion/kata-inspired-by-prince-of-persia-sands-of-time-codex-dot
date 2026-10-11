@@ -2,7 +2,7 @@
 
 ## Automated checks
 
-Strict TypeScript, 24 passing Vitest domain cases, production Vite build, and dependency audit (zero advisories after updating Vitest to 5.0.3). CI runs the same checks on Node 24. Domain tests use explicit scenario fixtures at the public Engine boundary; they are not browser gameplay.
+Strict TypeScript, 25 passing Vitest domain cases, production Vite build, and dependency audit (zero advisories after updating Vitest to 5.0.3). CI runs the same checks on Node 24. Domain tests use explicit scenario fixtures at the public Engine boundary; they are not browser gameplay.
 
 Tests cover finite rewind, new branches, complete enemy/trap/gate restoration, fatal-fall recovery, paused time, platform landing, stable wall contact, ledge climb, blade facing/range/cooldown, parry, sealed-gate traversal, switch timer reversal/expiry, anchor refill/history boundary/reload, gated chamber transitions, simultaneous lethal damage/exit, completed-save reset, and malformed save rejection.
 

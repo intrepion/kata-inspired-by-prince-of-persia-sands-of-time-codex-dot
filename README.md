@@ -38,7 +38,7 @@ Rewind unwinds the full room: position, health, enemies, trap phase and gate cou
 
 ## Validation
 
-`npm run check` runs strict type checking, 24 domain tests and production build. `npm audit --audit-level=high` checks dependency advisories. GitHub Actions repeats these on pushes and pull requests.
+`npm run check` runs strict type checking, 25 domain tests and production build. `npm audit --audit-level=high` checks dependency advisories. GitHub Actions repeats these on pushes and pull requests.
 
 [QA evidence](docs/QA.md), [specification](docs/SPEC.md), [glossary](GLOSSARY.md), [architecture decision](docs/adr/0001-fixed-chambers-and-time.md), and [independent reviews](docs/REVIEWS.md).
 

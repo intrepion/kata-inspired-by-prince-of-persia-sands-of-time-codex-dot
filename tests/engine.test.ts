@@ -57,6 +57,11 @@ describe('Puzzle, anchors and campaign',()=>{
  it('cannot jump or climb over the closed shutter from the switch ledge',()=>{
   const e=room(2);Object.assign(e.world.player,{x:566,y:288,vx:4.3,ground:true});step(e,4,{...emptyInput,right:true});e.step({...emptyInput,right:true,jump:true});step(e,70,{...emptyInput,right:true});e.step({...emptyInput,right:true,jump:true});step(e,70,{...emptyInput,right:true});expect(e.world.player.x).toBeLessThanOrEqual(734);expect(e.world.gate).toBe(0);
  });
+ it('cannot escape the chamber ceiling by repeated kicks against the sealed shutter',()=>{
+  const e=room(2);Object.assign(e.world.player,{x:734,y:438,ground:true});
+  for(let n=0;n<1000;n++){e.step({...emptyInput,right:true,jump:n%13===0});expect(e.world.player.x).toBeLessThanOrEqual(734);expect(e.world.player.y).toBeGreaterThanOrEqual(70);}
+  expect(e.world.gate).toBe(0);
+ });
  it('switch opens for six seconds, rewind restores it, and it closes again',()=>{
   const e=room(2);Object.assign(e.world.player,{x:535,y:288});e.step({...emptyInput,interact:true});expect(e.world.gate).toBe(360);step(e,60);expect(e.world.gate).toBe(300);e.step({...emptyInput,rewind:true});expect(e.world.gate).toBe(302);step(e,302);expect(e.world.gate).toBe(0);
  });
