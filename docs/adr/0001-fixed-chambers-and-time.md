@@ -1,0 +1,2 @@
+# Fixed chambers and a bounded reversible world
+Use a fixed side view and four authored chambers instead of third-person 3D so traversal silhouettes and combat intentions remain legible and a complete adventure fits the scope. The simulation runs at 60 Hz; snapshots reverse the entire mutable room while reserve remains outside history. Anchors are irreversible boundaries and the only persistent save points, preventing resource duplication and keeping reloads understandable.

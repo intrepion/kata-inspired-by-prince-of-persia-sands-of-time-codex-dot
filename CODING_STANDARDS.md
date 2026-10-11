@@ -1,0 +1,2 @@
+# Standards
+Keep simulation deterministic and independent of browser services. Use strict TypeScript and explicit domain types. Restore saves only after version, bounds and shape validation; tolerate storage failures. Input edges must not retrigger from OS key repeat. Keep mutable rewind world together and reserve outside it. Clear held controls on lifecycle interruption. Separate visible browser evidence from domain simulation evidence.
