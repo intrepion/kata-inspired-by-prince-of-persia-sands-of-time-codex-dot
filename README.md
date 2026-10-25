@@ -50,3 +50,7 @@ The original aqueduct, wall-kick garden, vent/shutter puzzle and Curator arena a
 Current acceptance status, primary research, scope decisions and the exact browser walkthrough are in [courtyard fidelity evidence](docs/COURTYARD_FIDELITY.md). The courtyard traversal, two-sentinel combat/retrieval, rewind, bell completion and save/legacy checks passed [normal-input browser acceptance](docs/LOCAL_ACCEPTANCE_2026-10-15.md). Gamepad, touch/multitouch, mobile readability, precise source-game animation timings, beams/ropes, companion puzzles and advanced time powers are outside this slice.
 
 [Grill with Docs](https://github.com/mattpocock/skills/blob/main/skills/engineering/grill-with-docs/SKILL.md) and [Implement](https://github.com/mattpocock/skills/blob/main/skills/engineering/implement/SKILL.md) informed the work. The user's explicit delegation settled recommended defaults and simulation seams without an optional interview. No commits or pushes were made.
+
+## Play online
+
+[Play the hosted game](https://intrepion.github.io/kata-inspired-by-prince-of-persia-sands-of-time-codex-dot/)
