@@ -54,3 +54,7 @@ Current acceptance status, primary research, scope decisions and the exact brows
 ## Play online
 
 [Play the hosted game](https://intrepion.github.io/kata-inspired-by-prince-of-persia-sands-of-time-codex-dot/)
+
+The experimental `?view=three` view uses Three.js 0.180.0 (bundled with its MIT license) and the existing courtyard simulation. The original renderer remains the default pending visual and input playtesting.
+
+The experimental view includes basic attack, rewind, and recoverable-sand cues, but does not yet reproduce the route labels or all original animations. Use the default view for the complete visual feedback.

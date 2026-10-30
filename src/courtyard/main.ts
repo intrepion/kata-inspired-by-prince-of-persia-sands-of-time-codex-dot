@@ -1,6 +1,7 @@
 import './style.css';
 import { Courtyard, SAVE_KEY, STEP, idle, type Controls } from './engine';
 import { CourtyardRenderer, type Camera } from './render';
+import type { createCourtyardThree } from './three-view';
 import { Audio } from '../audio';
 
 document.getElementById('app')!.innerHTML = `
@@ -17,6 +18,15 @@ document.getElementById('app')!.innerHTML = `
 
 const el = <T extends HTMLElement = HTMLElement>(id: string) => document.getElementById(id) as T;
 const game = new Courtyard(), canvas = el<HTMLCanvasElement>('courtyard'), renderer = new CourtyardRenderer(canvas), audio = new Audio();
+let threeView: ReturnType<typeof createCourtyardThree> | null = null;
+if (new URLSearchParams(location.search).get('view') === 'three') {
+  void import('./three-view').then(({ createCourtyardThree }) => {
+    const viewCanvas = document.createElement('canvas'); viewCanvas.id = 'courtyard-three'; viewCanvas.setAttribute('aria-hidden','true');
+    viewCanvas.style.cssText = 'position:absolute;left:0;width:100%;aspect-ratio:16/9;pointer-events:none'; viewCanvas.style.top = `${canvas.offsetTop}px`; canvas.before(viewCanvas);
+    threeView = createCourtyardThree(viewCanvas); canvas.style.background = 'transparent';
+  }).catch((error: unknown) => { console.warn('3D view unavailable; using the original view.',error); document.getElementById('courtyard-three')?.remove(); });
+}
+
 const camera: Camera = { yaw: 0, height: 4.5, overview: false };
 type Action = 'forward' | 'back' | 'left' | 'right' | 'jump' | 'special' | 'attack' | 'dagger' | 'rewind' | 'cameraLeft' | 'cameraRight' | 'cameraUp' | 'cameraDown';
 const held = new Map<Action, Set<string>>(), edges = new Set<Action>();
@@ -120,7 +130,7 @@ function frame(now: number): void {
       accumulator -= STEP;
     }
   } else accumulator = 0;
-  renderer.draw(game, camera, now / 1000);
+  if (threeView) { document.getElementById('courtyard-three')!.style.top = `${canvas.offsetTop}px`; canvas.getContext('2d')!.clearRect(0,0,canvas.width,canvas.height); threeView.render(game,camera,canvas.clientWidth,canvas.clientHeight); } else renderer.draw(game, camera, now / 1000);
   if (now - hudTime > 80) { update(); hudTime = now; }
   requestAnimationFrame(frame);
 }

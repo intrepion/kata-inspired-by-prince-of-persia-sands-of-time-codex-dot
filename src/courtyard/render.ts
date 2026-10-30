@@ -1,4 +1,5 @@
 import { Courtyard, platforms, type Vec3 } from './engine';
+import { cameraFraction } from './camera';
 interface Face { points: Vec3[]; color: string; stroke?: string }
 interface Screen { x: number; y: number; depth: number }
 export interface Camera { yaw: number; height: number; overview: boolean }
@@ -17,7 +18,10 @@ export class CourtyardRenderer {
     this.yaw = camera.yaw;
     const distance = camera.overview ? 19 : 8;
     const elevation = camera.overview ? 16 : camera.height;
-    this.eye = { x: p.x - Math.sin(camera.yaw) * distance, y: p.y + elevation, z: p.z - Math.cos(camera.yaw) * distance };
+    const focus = { x: p.x, y: p.y + 1.1, z: p.z };
+    const desiredEye = { x: p.x - Math.sin(camera.yaw) * distance, y: p.y + elevation, z: p.z - Math.cos(camera.yaw) * distance };
+    const fraction = cameraFraction(focus, desiredEye);
+    this.eye = { x: focus.x + (desiredEye.x - focus.x) * fraction, y: focus.y + (desiredEye.y - focus.y) * fraction, z: focus.z + (desiredEye.z - focus.z) * fraction };
     this.pitch = Math.atan2(1.1 - elevation, distance);
     const sky = c.createLinearGradient(0, 0, 0, h); sky.addColorStop(0, '#172f43'); sky.addColorStop(0.6, '#53696f'); sky.addColorStop(1, '#142733');
     c.fillStyle = sky; c.fillRect(0, 0, w, h);
