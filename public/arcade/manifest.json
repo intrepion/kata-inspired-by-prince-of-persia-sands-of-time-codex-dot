@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "gameId": "kata-inspired-by-prince-of-persia-sands-of-time-codex-dot",
   "playUrl": "https://intrepion.github.io/kata-inspired-by-prince-of-persia-sands-of-time-codex-dot/",
   "screenshots": [
@@ -12,6 +12,56 @@
         "sourcePath": "docs/screenshots/brass-lung.jpg",
         "deployedBuild": null,
         "captureDate": null
+      }
+    },
+    {
+      "path": "arcade/screenshots/ci-20261102-01.jpg",
+      "sha256": "39187d78c3de3aaccc6b0dfe001f05ad16ba5e49efeff2abdfa70294c18c76d4",
+      "alt": "The Last Meridian gameplay, view 1",
+      "provenance": {
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/ci-20261102-01.png",
+        "sourceSha256": "ce96499c6510be8f1bf26b0462c54e1df83750fd3e96e216ba64fcb4679b0410",
+        "captureCommit": "4412f7189e9a8aa57a05348037069b193259c896",
+        "workflowRunId": "41438098815",
+        "inputHashes": {
+          "index.html": "4b8735e76c465ce3e54bd030cca07992f83affde9cbf2b6d99ad01bc455493f2",
+          "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
+          "assets/index-qL1QtwRe.js": "57c4f4b3d78afea5711ffda5faf214049a17d21439fc2501847de2f35e5ff68f",
+          "assets/legacy-B0uaNhKq.css": "55505911aef3acaa60bf38a629fd9bc28c9c1bf76941e66370037548a3a699a8",
+          "assets/legacy-CWLUQKRp.js": "a99517b20145fc9c3d6f1bded3e764213aa15afd3621b278807a331aeba32464",
+          "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
+          "assets/main-CegG9Eof.js": "68553ae5d5db9451f337809fe567e963bd2bd2959802ad7903c4da59f288b30a",
+          "assets/three-view-CvhdUfB0.js": "4b4897e80494376035e185b4daab2234f71dda633d5d2f3449d6c8d1766d3fd5"
+        },
+        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
+        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
+        "captureRecordSha256": "ad0cbb8fbcec202e2ccbaba52a075889f518154a3f99199a49b0501e86c41c61"
+      }
+    },
+    {
+      "path": "arcade/screenshots/ci-20261102-02.jpg",
+      "sha256": "6275df7c5c69bb1171073ed6d15a0091695446f46e87a9c3aaa934027187f228",
+      "alt": "The Last Meridian gameplay, view 2",
+      "provenance": {
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/ci-20261102-02.png",
+        "sourceSha256": "7aed78db2066282c3ad40294ca880d8c6e4f867735b126054560c5a519012705",
+        "captureCommit": "4412f7189e9a8aa57a05348037069b193259c896",
+        "workflowRunId": "41438098815",
+        "inputHashes": {
+          "index.html": "4b8735e76c465ce3e54bd030cca07992f83affde9cbf2b6d99ad01bc455493f2",
+          "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
+          "assets/index-qL1QtwRe.js": "57c4f4b3d78afea5711ffda5faf214049a17d21439fc2501847de2f35e5ff68f",
+          "assets/legacy-B0uaNhKq.css": "55505911aef3acaa60bf38a629fd9bc28c9c1bf76941e66370037548a3a699a8",
+          "assets/legacy-CWLUQKRp.js": "a99517b20145fc9c3d6f1bded3e764213aa15afd3621b278807a331aeba32464",
+          "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
+          "assets/main-CegG9Eof.js": "68553ae5d5db9451f337809fe567e963bd2bd2959802ad7903c4da59f288b30a",
+          "assets/three-view-CvhdUfB0.js": "4b4897e80494376035e185b4daab2234f71dda633d5d2f3449d6c8d1766d3fd5"
+        },
+        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
+        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
+        "captureRecordSha256": "ad0cbb8fbcec202e2ccbaba52a075889f518154a3f99199a49b0501e86c41c61"
       }
     }
   ]

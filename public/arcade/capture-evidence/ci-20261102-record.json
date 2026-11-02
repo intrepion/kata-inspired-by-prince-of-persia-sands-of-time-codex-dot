@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "9476ce3a9b256a89e6d94d23f8e9c7cca1412c7a",
+  "sourceCommit": "4412f7189e9a8aa57a05348037069b193259c896",
+  "runId": "41438098815",
+  "url": "http://127.0.0.1:4279/",
+  "inputs": {
+    "index.html": "4b8735e76c465ce3e54bd030cca07992f83affde9cbf2b6d99ad01bc455493f2",
+    "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
+    "assets/index-qL1QtwRe.js": "57c4f4b3d78afea5711ffda5faf214049a17d21439fc2501847de2f35e5ff68f",
+    "assets/legacy-B0uaNhKq.css": "55505911aef3acaa60bf38a629fd9bc28c9c1bf76941e66370037548a3a699a8",
+    "assets/legacy-CWLUQKRp.js": "a99517b20145fc9c3d6f1bded3e764213aa15afd3621b278807a331aeba32464",
+    "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
+    "assets/main-CegG9Eof.js": "68553ae5d5db9451f337809fe567e963bd2bd2959802ad7903c4da59f288b30a",
+    "assets/three-view-CvhdUfB0.js": "4b4897e80494376035e185b4daab2234f71dda633d5d2f3449d6c8d1766d3fd5"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "screenshots": [
+    "meridian-01.png",
+    "meridian-02.png"
+  ]
+}
