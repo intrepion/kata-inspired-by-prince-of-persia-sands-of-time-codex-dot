@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "gameId": "kata-inspired-by-prince-of-persia-sands-of-time-codex-dot",
+  "playUrl": "https://intrepion.github.io/kata-inspired-by-prince-of-persia-sands-of-time-codex-dot/",
+  "screenshots": [
+    {
+      "path": "arcade/screenshots/view-01.jpg",
+      "sha256": "ba71625b989ca16404564ac7d55d49a27762da680422f0ffd20e815cd4eccf1a",
+      "alt": "Gameplay capture 1",
+      "provenance": {
+        "kind": "existing_repository_capture",
+        "sourcePath": "docs/screenshots/brass-lung.jpg",
+        "deployedBuild": null,
+        "captureDate": null
+      }
+    }
+  ]
+}

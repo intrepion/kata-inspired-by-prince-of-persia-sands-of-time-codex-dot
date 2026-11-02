@@ -58,3 +58,7 @@ Current acceptance status, primary research, scope decisions and the exact brows
 The experimental `?view=three` view uses Three.js 0.180.0 (bundled with its MIT license) and the existing courtyard simulation. The original renderer remains the default pending visual and input playtesting.
 
 The experimental view includes basic attack, rewind, and recoverable-sand cues, but does not yet reproduce the route labels or all original animations. Use the default view for the complete visual feedback.
+
+## Arcade metadata
+
+See [docs/arcade-metadata.md](docs/arcade-metadata.md) for the game-owned manifest and screenshot provenance.
