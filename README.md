@@ -1,5 +1,7 @@
 # The Last Meridian
 
+[Kata Arcade](https://intrepion.github.io/)
+
 An original acrobatic action adventure inspired by the camera, movement and finite mistake recovery of *Prince of Persia: The Sands of Time* (2003 console/PC). Courier **Sera** crosses the stormbound city of **Vey** to restore its meridian bell. Original story, geometric art and locally synthesized audio; no source-game assets or remote services.
 
 The default **Broken Aqueduct** route is a bounded third-person 3D vertical slice: camera-relative free movement, a wall-run above a void, vertical wall run / ledge catch and climb, a hanging-pole transfer, a moving blade, and two sentinels whose sand must be retrieved before the bell gate opens. It is a short mechanics study, not a full recreation or campaign. The original four-chamber side-view adventure remains playable at `?legacy=1` and retains its original save.
