@@ -158,3 +158,23 @@ describe('Courtyard player-facing mechanics', () => {
     expect(game.finished).toBe(2);
   });
 });
+
+it('counter-retrieves directly after a real block, spends the window once, and rewinds the enemy', () => {
+ const game = new Courtyard();game.restore('{"version":1,"anchor":"court","won":false}');game.tanks=1;game.world.player.x=2;
+ const enemy=game.world.enemies[0];enemy.x=2;enemy.z=34;
+ until(game,()=>game.world.player.counter>0,{special:true});
+ hold(game,1,{special:true,dagger:true});expect(enemy.phase).toBe('sand');expect(game.finished).toBe(1);expect(game.tanks).toBe(2);expect(game.world.player.counter).toBe(0);expect(game.world.player.hp).toBe(5);
+ const other=game.world.enemies[1];other.x=2;other.z=34;hold(game,1,{dagger:true});expect(game.finished).toBe(1);
+ hold(game,1,{rewind:true});expect(game.finished).toBe(0);expect(game.tanks).toBe(1);
+});
+it('requires a current block window for standing targets',()=>{
+ const game=new Courtyard();game.restore('{"version":1,"anchor":"court","won":false}');const enemy=game.world.enemies[0];enemy.x=0;enemy.z=34;
+ hold(game,1,{dagger:true});expect(game.finished).toBe(0);
+ until(game,()=>game.world.player.counter>0,{special:true});hold(game,37,{special:true});hold(game,1,{dagger:true});expect(game.finished).toBe(0);
+});
+it('directs retrieval toward movement rather than a closer downed foe behind the courier',()=>{
+ const game=new Courtyard();game.restore('{"version":1,"anchor":"court","won":false}');const [behind,ahead]=game.world.enemies;
+ behind.x=0;behind.z=32.5;ahead.x=0;ahead.z=35;for(const e of [behind,ahead]){e.phase='down';e.hp=0;e.timer=5;}
+ hold(game,1,{forward:1,dagger:true});expect(ahead.phase).toBe('sand');expect(behind.phase).toBe('down');
+ hold(game,1,{dagger:true});expect(behind.phase).toBe('sand');expect(game.finished).toBe(2);
+});

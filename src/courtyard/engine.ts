@@ -84,7 +84,7 @@ export class Courtyard {
     const direction = { x: Math.cos(input.yaw) * side + Math.sin(input.yaw) * front, z: -Math.sin(input.yaw) * side + Math.cos(input.yaw) * front };
     const moving = Math.hypot(direction.x, direction.z) > 0.1;
     if (moving) p.facing = Math.atan2(direction.x, direction.z);
-    if (input.dagger && this.retrieve()) return;
+    if (input.dagger && this.retrieve(direction, moving)) return;
     if (input.attack && p.strike <= 0) this.attack(direction, moving);
     this.move(input, direction, moving);
     this.sentinels(input.special && p.motion === 'ground');
@@ -200,11 +200,20 @@ export class Courtyard {
     if (enemy.hp <= 0) { enemy.phase = 'down'; enemy.timer = 5; this.world.message = 'Sentinel down. E retrieves its sand before it rises again.'; }
     else { enemy.phase = 'recover'; enemy.timer = 0.5; this.world.message = 'Sword strike. Keep moving, vault or block and counter.'; }
   }
-  private retrieve(): boolean {
-    const p = this.world.player, enemy = this.world.enemies.find(e => e.phase === 'down' && distance(p, e) < 2.8 && Math.abs(e.y - p.y) < 2);
+  private retrieve(direction: { x: number; z: number }, moving: boolean): boolean {
+    const p = this.world.player;
+    const canCounter = p.counter > 0 && p.motion === 'ground';
+    const enemy = this.world.enemies.filter(e =>
+      (e.phase === 'down' || (canCounter && e.phase !== 'sand')) &&
+      distance(p, e) < 2.8 && Math.abs(e.y - p.y) < 2 &&
+      (!moving || (e.x - p.x) * direction.x + (e.z - p.z) * direction.z > -0.2)
+    ).sort((a, b) => distance(p, a) - distance(p, b))[0];
     if (!enemy) return false;
+    const countered = enemy.phase !== 'down';
     enemy.phase = 'sand'; this.tanks = Math.min(3, this.tanks + 1);
-    this.world.message = this.finished === 2 ? 'Both sands retrieved. The bell gate is open. E at the bell.' : 'Sand retrieved: sentinel destroyed and one rewind tank refilled.';
+    if (countered) p.counter = 0; // One defended attack permits one counter-retrieve.
+    p.facing = Math.atan2(enemy.x - p.x, enemy.z - p.z);
+    this.world.message = this.finished === 2 ? 'Both sands retrieved. The bell gate is open. E at the bell.' : countered ? 'Counter-retrieve! Sentinel destroyed and one rewind tank refilled.' : 'Sand retrieved: sentinel destroyed and one rewind tank refilled.';
     return true;
   }
   private sentinels(blocking: boolean): void {
