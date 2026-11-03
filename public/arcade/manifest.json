@@ -4,64 +4,47 @@
   "playUrl": "https://intrepion.github.io/kata-inspired-by-prince-of-persia-sands-of-time-codex-dot/",
   "screenshots": [
     {
-      "path": "arcade/screenshots/view-01.jpg",
-      "sha256": "ba71625b989ca16404564ac7d55d49a27762da680422f0ffd20e815cd4eccf1a",
-      "alt": "Gameplay capture 1",
+      "path": "arcade/screenshots/review-20261103-01.jpg",
+      "sha256": "f0cb1c3ae5f020121193bd71d2feca6cabc65dc70be4faa4c1ec3874f5260883",
+      "alt": "The Last Meridian gameplay after the mechanics update, view 1",
       "provenance": {
-        "kind": "existing_repository_capture",
-        "sourcePath": "docs/screenshots/brass-lung.jpg",
-        "deployedBuild": null,
-        "captureDate": null
+        "kind": "ci_gameplay_capture",
+        "sourcePath": "arcade/capture-evidence/review-20261103-01.png",
+        "sourceSha256": "d03ba05517e8342d3c9aeafc07faee470bca268decae9307654145c869948e93",
+        "captureCommit": "eeb8142d07a96aace55c3f83870f3b2f1b9286f1",
+        "workflowRunId": "41675267396",
+        "inputHashes": {
+          "index.html": "4e080e08d905057ba85a086cf49636c71555c5ba4f99331802b14312a5f5ef38",
+          "assets/index-Be9RDV_I.js": "5a4ce3ba6b519b15bad622c13d71bd9744c32527f61fefc5a761b1c8a824b234",
+          "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
+          "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
+          "assets/main-B08-h0Bd.js": "9661b1a0aea919ad2c3dc6996ee8f0602d6e1f5717f402fd4f00b6e6dde1e2ff"
+        },
+        "publishedFilesVerifiedAt": "2026-11-03T16:39:50Z",
+        "captureRecordPath": "arcade/capture-evidence/review-20261103-record.json",
+        "captureRecordSha256": "f74ab6070119b9fbf52b401badaa80ea26b82b04de7ce94f45e65aa54fd562b3"
       }
     },
     {
-      "path": "arcade/screenshots/ci-20261102-01.jpg",
-      "sha256": "39187d78c3de3aaccc6b0dfe001f05ad16ba5e49efeff2abdfa70294c18c76d4",
-      "alt": "The Last Meridian gameplay, view 1",
+      "path": "arcade/screenshots/review-20261103-02.jpg",
+      "sha256": "3fd906150104680f813d23fcdae798631fecf937a0f131c3097ccfd86728cc92",
+      "alt": "The Last Meridian gameplay after the mechanics update, view 2",
       "provenance": {
         "kind": "ci_gameplay_capture",
-        "sourcePath": "arcade/capture-evidence/ci-20261102-01.png",
-        "sourceSha256": "ce96499c6510be8f1bf26b0462c54e1df83750fd3e96e216ba64fcb4679b0410",
-        "captureCommit": "4412f7189e9a8aa57a05348037069b193259c896",
-        "workflowRunId": "41438098815",
+        "sourcePath": "arcade/capture-evidence/review-20261103-02.png",
+        "sourceSha256": "67c68ea7218e0d9b120891d33bca1a3a75090396ca741bc2313a0a4b26d52f6e",
+        "captureCommit": "eeb8142d07a96aace55c3f83870f3b2f1b9286f1",
+        "workflowRunId": "41675267396",
         "inputHashes": {
-          "index.html": "4b8735e76c465ce3e54bd030cca07992f83affde9cbf2b6d99ad01bc455493f2",
-          "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
-          "assets/index-qL1QtwRe.js": "57c4f4b3d78afea5711ffda5faf214049a17d21439fc2501847de2f35e5ff68f",
-          "assets/legacy-B0uaNhKq.css": "55505911aef3acaa60bf38a629fd9bc28c9c1bf76941e66370037548a3a699a8",
-          "assets/legacy-CWLUQKRp.js": "a99517b20145fc9c3d6f1bded3e764213aa15afd3621b278807a331aeba32464",
+          "index.html": "4e080e08d905057ba85a086cf49636c71555c5ba4f99331802b14312a5f5ef38",
+          "assets/index-Be9RDV_I.js": "5a4ce3ba6b519b15bad622c13d71bd9744c32527f61fefc5a761b1c8a824b234",
           "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
-          "assets/main-CegG9Eof.js": "68553ae5d5db9451f337809fe567e963bd2bd2959802ad7903c4da59f288b30a",
-          "assets/three-view-CvhdUfB0.js": "4b4897e80494376035e185b4daab2234f71dda633d5d2f3449d6c8d1766d3fd5"
-        },
-        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
-        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
-        "captureRecordSha256": "ad0cbb8fbcec202e2ccbaba52a075889f518154a3f99199a49b0501e86c41c61"
-      }
-    },
-    {
-      "path": "arcade/screenshots/ci-20261102-02.jpg",
-      "sha256": "6275df7c5c69bb1171073ed6d15a0091695446f46e87a9c3aaa934027187f228",
-      "alt": "The Last Meridian gameplay, view 2",
-      "provenance": {
-        "kind": "ci_gameplay_capture",
-        "sourcePath": "arcade/capture-evidence/ci-20261102-02.png",
-        "sourceSha256": "7aed78db2066282c3ad40294ca880d8c6e4f867735b126054560c5a519012705",
-        "captureCommit": "4412f7189e9a8aa57a05348037069b193259c896",
-        "workflowRunId": "41438098815",
-        "inputHashes": {
-          "index.html": "4b8735e76c465ce3e54bd030cca07992f83affde9cbf2b6d99ad01bc455493f2",
           "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
-          "assets/index-qL1QtwRe.js": "57c4f4b3d78afea5711ffda5faf214049a17d21439fc2501847de2f35e5ff68f",
-          "assets/legacy-B0uaNhKq.css": "55505911aef3acaa60bf38a629fd9bc28c9c1bf76941e66370037548a3a699a8",
-          "assets/legacy-CWLUQKRp.js": "a99517b20145fc9c3d6f1bded3e764213aa15afd3621b278807a331aeba32464",
-          "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
-          "assets/main-CegG9Eof.js": "68553ae5d5db9451f337809fe567e963bd2bd2959802ad7903c4da59f288b30a",
-          "assets/three-view-CvhdUfB0.js": "4b4897e80494376035e185b4daab2234f71dda633d5d2f3449d6c8d1766d3fd5"
+          "assets/main-B08-h0Bd.js": "9661b1a0aea919ad2c3dc6996ee8f0602d6e1f5717f402fd4f00b6e6dde1e2ff"
         },
-        "publishedFilesVerifiedAt": "2026-11-02T19:01:20Z",
-        "captureRecordPath": "arcade/capture-evidence/ci-20261102-record.json",
-        "captureRecordSha256": "ad0cbb8fbcec202e2ccbaba52a075889f518154a3f99199a49b0501e86c41c61"
+        "publishedFilesVerifiedAt": "2026-11-03T16:39:50Z",
+        "captureRecordPath": "arcade/capture-evidence/review-20261103-record.json",
+        "captureRecordSha256": "f74ab6070119b9fbf52b401badaa80ea26b82b04de7ce94f45e65aa54fd562b3"
       }
     }
   ]

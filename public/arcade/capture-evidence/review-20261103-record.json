@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "workflowCommit": "eeb8142d07a96aace55c3f83870f3b2f1b9286f1",
+  "sourceCommit": "eeb8142d07a96aace55c3f83870f3b2f1b9286f1",
+  "runId": "41675267396",
+  "url": "http://127.0.0.1:4280/",
+  "inputs": {
+    "index.html": "4e080e08d905057ba85a086cf49636c71555c5ba4f99331802b14312a5f5ef38",
+    "assets/index-Be9RDV_I.js": "5a4ce3ba6b519b15bad622c13d71bd9744c32527f61fefc5a761b1c8a824b234",
+    "assets/main-0tY4BxfJ.css": "0c6246b9f48c144232afc5fbbee54b60b04adf83f15cabcf65820654bc130510",
+    "assets/audio-DeBxfRpd.js": "71d8cf50b5d8037d0ef1844ae168dce57f535fba2636b5be65215658b3b97c8f",
+    "assets/main-B08-h0Bd.js": "9661b1a0aea919ad2c3dc6996ee8f0602d6e1f5717f402fd4f00b6e6dde1e2ff"
+  },
+  "browser": "153.0.8010.12",
+  "viewport": {
+    "width": 1280,
+    "height": 1000
+  },
+  "screenshots": [
+    "meridian-01.png",
+    "meridian-02.png"
+  ]
+}
